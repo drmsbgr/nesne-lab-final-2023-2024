@@ -18,6 +18,7 @@ public class StudentRepository : IStudentRepository
 
         if (course is null) return;
 
+        student.CourseId = courseId;
         course.RegisteredStudents?.Add(student);
         _context.SaveChanges();
     }
@@ -27,7 +28,10 @@ public class StudentRepository : IStudentRepository
         if (course.RegisteredStudents is null) return;
 
         foreach (var item in course.RegisteredStudents)
+        {
+            item.CourseId = 0;
             _context.Students?.Remove(item);
+        }
 
         _context.SaveChanges();
     }
