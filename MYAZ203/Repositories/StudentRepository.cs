@@ -27,10 +27,10 @@ public class StudentRepository : IStudentRepository
     {
         if (course.RegisteredStudents is null) return;
 
-        foreach (var item in course.RegisteredStudents)
+        foreach (var student in course.RegisteredStudents)
         {
-            item.CourseId = 0;
-            _context.Students?.Remove(item);
+            student.CourseId = 0;
+            _context.Students?.Remove(student);
         }
 
         _context.SaveChanges();

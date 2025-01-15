@@ -4,6 +4,7 @@ using MYAZ203.Repositories;
 var context = new RepositoryContext();
 var courseRepo = new CourseRepository(context);
 
+/*
 courseRepo.CreateCourseWithStudents(new Course()
 {
     CourseId = 1,
@@ -54,3 +55,9 @@ courseRepo.CreateCourseWithStudents(new Course()
         },
     ]
 });
+
+*/
+
+courseRepo.GetAll().ToList()
+.ForEach(c => c.RegisteredStudents.ToList()
+.ForEach(s => System.Console.WriteLine(s.StudentName)));
